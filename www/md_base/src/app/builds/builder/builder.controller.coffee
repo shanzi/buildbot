@@ -12,11 +12,11 @@ class Builder extends Controller
         
         data = @dataService.open($scope)
 
-        @builderid = $state.params.builderid
+        @builderid = @$state.params.builderid
         @dataService.getBuilders(@builderid).then (data) =>
             if data.length == 0
                 alert 'Builder not found!'
-                $state.go('builds')
+                @$state.go('builds')
             else
                 @info = data[0]
                 @forceschedulers = @info.loadForceschedulers().getArray()
